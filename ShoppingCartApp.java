@@ -85,9 +85,15 @@ public class ShoppingCartApp {
 
 
 
+
+
                 case 2:
 
                 case 3:
+
+                    for (ShoppingCart shoppingCart: items){
+                        System.out.println(shoppingCart);
+                    }
 
                 case 4:
 
