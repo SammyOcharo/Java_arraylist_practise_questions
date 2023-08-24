@@ -51,6 +51,14 @@ class ShoppingCart{
     public double getTotalPrice(){
         return product.getPrice() * Quantity;
     }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "product=" + product +
+                ", Quantity=" + Quantity +
+                '}';
+    }
 }
 public class ShoppingCartApp {
     public static void main(String[] args) {
@@ -81,13 +89,35 @@ public class ShoppingCartApp {
                         System.out.println((i+1)+ " " + products.get(i));
                     }
                     System.out.println("Enter the number of the product you want to add: ");
-//                    int product = scanner.nextInt();
+                    int product = scanner.nextInt();
 
+                    System.out.println("Enter the quantity of the product: ");
+                    int numberOfItems = scanner.nextInt();
 
+                    if(product>=1 && product<= products.size()){
 
-
+                        items.add(new ShoppingCart(products.get(product-1), numberOfItems));
+                        System.out.println("Item added to cart");
+                    }else {
+                        System.out.println("Invalid item added!");
+                    }
+                    break;
 
                 case 2:
+                    System.out.println("Enter the number of the product you want to remove: ");
+                    int productToBeRemoved = scanner.nextInt();
+
+                    System.out.println("Enter the quantity of the product: ");
+                    int numberOfItemsToBeRemoved = scanner.nextInt();
+
+                    if(productToBeRemoved>=1 && productToBeRemoved<= products.size()){
+
+                        items.remove(new ShoppingCart(products.get(productToBeRemoved-1), numberOfItemsToBeRemoved));
+                        System.out.println("Item removed from cart to cart");
+                    }else {
+                        System.out.println("Invalid number clicked!");
+                    }
+                    break;
 
                 case 3:
 
@@ -95,9 +125,23 @@ public class ShoppingCartApp {
                         System.out.println(shoppingCart);
                     }
 
+                    break;
+
                 case 4:
 
+                    double totalPrice = 0;
+
+                    for (ShoppingCart shoppingCart: items){
+                        totalPrice += shoppingCart.getTotalPrice();
+                    }
+
+                    System.out.println("Total price is: " + totalPrice);
+                    break;
+
                 case 5:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    System.exit(0);
 
                 default:
                     System.out.println("You have entered an invalid option!");
