@@ -2,8 +2,7 @@
 //Build a music playlist manager using ArrayLists. Store songs with details like title, artist, album, and duration.
 // Implement features to add songs, remove songs, shuffle the playlist, and display the current playing song.
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 class Song{
 
@@ -47,6 +46,7 @@ public class MusicPlayer {
 
 
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
         while (true){
             System.out.println("\nMusic Playlist Manager");
@@ -90,9 +90,41 @@ public class MusicPlayer {
                         System.out.println(song.toString());
                     }
 
+                    System.out.println("Enter the title of the song to be removed");
+                    String name  = scanner.nextLine();
+
+                    ArrayList<Song> SearchedSong = new ArrayList<>();
+
+                    for (Song song: PlayList){
+                        if(song.getTitle().equalsIgnoreCase(name)){
+                            System.out.println("The song (" + song + ") has been removed from the playlist");
+                        } else {
+                            System.out.println("Song not found on the playlist");
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("Shuffling started");
+
+                    Collections.shuffle(PlayList, random);
+                    System.out.println("Shuffle completed successfully here is the new playlist");
+
+
                     break;
 
+                case 4:
+                    System.out.println("Here is the playlist.");
+                    for (Song song: PlayList){
+                        System.out.println(song);
+                    }
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    System.exit(0);
 
+                default:
+                    System.out.println("Invalid number entered..");
             }
         }
 
