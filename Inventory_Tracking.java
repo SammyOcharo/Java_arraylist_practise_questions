@@ -54,10 +54,10 @@ public class Inventory_Tracking {
 
         while (true){
             System.out.println("\nInventory Tracking System");
-            System.out.println("1. Add Product");
-            System.out.println("2. Update Quantity");
+            System.out.println("1. Add Product to inventory");
+            System.out.println("2. Update inventory Quantity");
             System.out.println("3. Calculate Total Inventory Value");
-            System.out.println("4. Exit");
+            System.out.println("4. Exit.");
             System.out.print("Select an option: ");
 
 
