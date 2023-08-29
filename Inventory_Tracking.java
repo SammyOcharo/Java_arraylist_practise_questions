@@ -35,6 +35,10 @@ class Products {
         return quantity;
     }
 
+    public double TotalInventoryPrice(){
+        return quantity * price;
+    }
+
     @Override
     public String toString() {
         return "name='" + name + '\'' + ", quantity=" + quantity + ", price=" + price;
@@ -49,13 +53,11 @@ public class Inventory_Tracking {
 
 
         while (true){
-
             System.out.println("\nInventory Tracking System");
             System.out.println("1. Add Product");
             System.out.println("2. Update Quantity");
             System.out.println("3. Calculate Total Inventory Value");
-            System.out.println("4. Generate Inventory Report");
-            System.out.println("5. Exit");
+            System.out.println("4. Exit");
             System.out.print("Select an option: ");
 
 
@@ -107,9 +109,19 @@ public class Inventory_Tracking {
 
                     break;
                 case 3:
-                case 4:
-                case 5:
+                    System.out.println("Total Inventory Price");
+                    double TotalPrice = 0;
+                    for(Products products: inventoryList){
+                        TotalPrice = TotalPrice + products.TotalInventoryPrice();
+                    }
 
+                    System.out.print("Total Inventory price is " + TotalPrice);
+
+                    break;
+                case 4:
+                    System.out.println("Exiting..");
+                    scanner.close();
+                    System.exit(0);
                 default:
                     System.out.println("Invalid option..");
             }
