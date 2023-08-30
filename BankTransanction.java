@@ -86,6 +86,26 @@ public class BankTransanction {
 
             int choice = scanner.nextInt();
             scanner.nextLine();
+
+            switch (choice){
+
+                case 1:
+                    System.out.println("Add new customer");
+
+                    System.out.print("Enter customer name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter customer Age: ");
+                    String age = scanner.nextLine();
+
+                    System.out.print("Enter customer Id: ");
+                    String id = scanner.nextLine();
+
+                    customer.add(new Customer(name, id, age));
+
+                    System.out.println("Customer successfully added!");
+
+            }
         }
     }
 }
