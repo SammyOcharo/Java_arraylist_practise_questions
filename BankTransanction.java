@@ -71,6 +71,7 @@ public class BankTransanction {
     public static void main(String[] args) {
 
         ArrayList<Customer> customer = new ArrayList<>();
+        ArrayList<Transaction> transactions = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -104,7 +105,49 @@ public class BankTransanction {
                     customer.add(new Customer(name, id, age));
 
                     System.out.println("Customer successfully added!");
+                    break;
 
+                case 2:
+                    System.out.println("List of all Customers");
+                    for (Customer customer1: customer){
+                        System.out.println(customer1.toString());
+                    }
+                    break;
+                case 3:
+                    System.out.println("Enter the name and Id of the customer you want to delete.");
+                    System.out.print("Name: ");
+                    String customername = scanner.nextLine();
+
+                    System.out.print("Id: ");
+                    String customerId = scanner.nextLine();
+
+                    for (Customer customer1: customer){
+                        if(customer1.getName().equalsIgnoreCase(customername) && (customer1.getId().equalsIgnoreCase(customerId))){
+                            customer.remove(customer1);
+                        }
+                    }
+                    System.out.println("Customer deleted!");
+                    break;
+
+                case 4:
+                    System.out.println("All customer Transactions.");
+                    System.out.print(" Enter the name of the customer to view transactions: ");
+                    String CustomerNameTransaction = scanner.nextLine();
+
+                    for (Transaction transaction: transactions){
+                        if(transaction.getCustomer().getName().equalsIgnoreCase(CustomerNameTransaction)){
+                            System.out.println(transaction.toString());
+                        }
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Exiting....");
+                    scanner.close();
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid option entered..");
             }
         }
     }
